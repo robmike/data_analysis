@@ -12,7 +12,6 @@ getmonitor <- function(id, directory, summarize = FALSE) {
         
         ## Your code here
   fname <- sprintf('%03i.csv', as.integer(id))
-  print(fname)
   fpath <- paste(directory, fname, sep="/")
   dframe <- read.csv(fpath)
   
