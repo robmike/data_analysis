@@ -13,7 +13,14 @@ for (i in 1:length(outcomes)) {
                   paste("Hospital.30.Day.Death..Mortality..Rates.from.",
                         titlecase(outcomes[i]), sep=''))
   x[,colidx] <- as.numeric(x[,colidx])
+  title = paste(sub('\\.', ' ', titlecase(outcomes[i])), "30-Day Death Rate")
+  ndigit <- 2
+  title = paste(title, 'bar(x) =',
+    format(round(mean(x[,colidx], na.rm=TRUE), 2), nsmall=2))
   hist(x[, colidx],
-       main = paste(sub('\\.', ' ', titlecase(outcomes[i]), "30-Day Death Rate")),
-       xlab = "30-Day Death Rate")
+       main = title,
+       xlab = "30-Day Death Rate",
+       prob=TRUE)
+  abline(v=mean(x[,colidx], na.rm=TRUE), col="blue", lwd=2)
+  lines(density(x[,colidx] , na.rm=TRUE, adjust=2))
 }
