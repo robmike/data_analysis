@@ -35,6 +35,6 @@ rankhospital <- function(state, outcome, num = "best") {
     return(NA)
   }
 
-  x[[ii[num],1]]
+  as.character(x[[ii[num],1]])
 }
 
