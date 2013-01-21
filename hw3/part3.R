@@ -18,15 +18,16 @@ state <- outcome2$State
 bymedian <- reorder(outcome2$State, outcome2[,11], function(x) { median(x,na.rm=TRUE)})
 z <- x[levels(bymedian)]
 fancylabels <- paste(levels(bymedian),"(", z, ")", sep="")
-# levels(bymedian) <- fancylabels
 
+## levels(bymedian) <- fancylabels
+## levels(death) <- fancylabels
 ## boxplot(death ~ bymedian,
 ##         ylab = '30-Day Death Rate',
 ##         las = 2,
 ##         cex.axis = 0.8,
 ##         xaxt = 'n')
 ## title("Heart Attack 30-day Death Rate by State")
-
+ 
 boxplot(death ~ bymedian,
         ylab = '30-Day Death Rate',
         las = 2,
