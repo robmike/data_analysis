@@ -7,13 +7,16 @@ x <- x[x > thresh]
 outcome2 <- outcome[outcome$State %in% names(x),]
 
 death <- outcome2[, 11]
-state <- (outcome2$State
+state <- outcome2$State
 ## boxplot(death ~ state,
 ##         ylab = '30-Day Death Rate',
-##         title = 'Heart Attack 30-day Death Rate by State',
 ##         las = 2)
+## title("Heart Attack 30-day Death Rate by State")
 
-boxplot(death ~ state,
+# do.call(rbind, by(x, x$State, rankall_helper))
+
+bymedian <- reorder(outcome2$State, outcome2[,11], function(x) { median(x,na.rm=TRUE)})
+boxplot(death ~ bymedian,
         ylab = '30-Day Death Rate',
         las = 2)
-title('Heart Attack 30-day Death Rate by State')
+title("Heart Attack 30-day Death Rate by State")
