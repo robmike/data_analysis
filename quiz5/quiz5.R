@@ -20,3 +20,4 @@ data(quine);
 x <- quine[,-5];
 lm1 <- lm(I(log(quine$Days+2.5)) ~ ., data=x);
 aic = step(lm1);
+
